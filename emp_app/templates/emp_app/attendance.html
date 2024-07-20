@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Attendance</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>user</th>
+                <th>Date</th> 
+                <th>status</th>
+                <th>Check-in Time</th>
+                <th>Check-out Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attendance in attendances %}
+            <tr>
+                <td>{{ attendance.user}}</td>
+                <td>{{ attendance.date }}</td>  
+                <td>{{ attendance.status}}</td> 
+                <td>{{ attendance.check_in_time }}</td>
+                <td>{{ attendance.check_out_time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
