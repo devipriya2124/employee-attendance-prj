@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title> 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <h2>Users</h2>
+    <ul>
+        {% for user in users %}
+        <li>{{ user.username }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Leave Requests</h2>
+    <ul>
+        {% for request in leave_requests %}
+        <li>{{ request.user.username }}: {{ request.start_date }} to {{ request.end_date }} - Reason: {{ request.reason }} - Status: {{ request.status }} 
+            <a href="{% url 'approve_leave' leave_id=request.id %}">Approve</a>
+            <a href="{% url 'reject_leave' leave_id=request.id %}">Reject</a>
+        </li>
+        {% endfor %}
+    </ul> 
+    <a href="{% url 'logout' %}">logout</a>
+</body>
+</html>  

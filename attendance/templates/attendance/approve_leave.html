@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Approve Leave Requests</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h2>Approve Leave Requests</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Leave Date</th>
+                <th>Reason</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for leave in leave_requests %}
+            <tr>
+                <td>{{ leave.user.username }}</td>
+                <td>{{ leave.leave_date }}</td>
+                <td>{{ leave.reason }}</td>
+                <td>
+                    <a href="{% url 'approve_leave' leave_id=request.id %}">Approve</a>
+                    <a href="{% url 'reject_leave' leave_id=request.id %}">Reject</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

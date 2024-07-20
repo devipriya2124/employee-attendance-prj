@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mark Attendance</title> 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Mark Attendance</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="check_in_time">Check-in Time:</label>
+        <input type="time" name="check_in_time" required>
+        <label for="check_out_time">Check-out Time:</label>
+        <input type="time" name="check_out_time">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

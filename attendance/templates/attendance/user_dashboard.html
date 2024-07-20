@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title> 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}</h1>
+    <h2>Attendance Records</h2>
+    <ul>
+        {% for record in attendance_records %}
+        <li>{{record.user.username}} - {{ record.date }} - Status: {{ record.status }} - Check-in: {{ record.check_in_time }} - Check-out: {{ record.check_out_time }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'mark_attendance' %}">Mark Attendance</a>
+    <h2>Leave Requests</h2>
+    <ul>
+        {% for request in leave_requests %}
+        <li>{{ request.user }} - {{ request.start_date }} to {{ request.end_date }} - Status: {{ request.status }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'request_leave' %}">Request Leave</a> 
+    <h2>other actions</h2> 
+    <ul> 
+        <li><a href="{% url 'attendance_view' %}">View Attendance</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li> 
+    </ul>
+</body>
+</html> 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    {% load static %}
+    <title>Employee Attendance System</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Employee Attendance System</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'user_dashboard' %}">User Dashboard</a></li>
+            <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li> 
+            <li><a href="{% url 'admin_login' %}">Admin login</a></li> 
+        </ul>
+    </nav>
+    <footer>
+        <!-- <p>&copy; 2024 Employee Attendance System. All rights reserved.</p> -->
+    </footer>
+</body>
+</html>
